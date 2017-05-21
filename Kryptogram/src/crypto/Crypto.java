@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 public class Crypto {
-	
+
 	private Map<Character, String> assigns = new HashMap<>();
 	private final String input = "XIIIXVXIVXIXXVIIIVXVIIXVIIIXIX";
 
@@ -14,11 +14,11 @@ public class Crypto {
 		setAssigns();
 		decipher();
 	}
-	
+
 	private void decipher() {
 		getResult(input, "");
 	}
-	
+
 	private void getResult(String in, String result) {
 		if (in.length() == 0) {
 			if (result.length() == 10) {
@@ -28,15 +28,15 @@ public class Crypto {
 		}
 		String s;
 		Iterator<Entry<Character, String>> it = assigns.entrySet().iterator();
-	    while (it.hasNext()) {
-	    	Entry<Character, String> pair = (Entry<Character, String>) it.next();
-	    	s = pair.getValue();
+		while (it.hasNext()) {
+			Entry<Character, String> pair = (Entry<Character, String>) it.next();
+			s = pair.getValue();
 			if (in.startsWith(s)) {
 				getResult(in.substring(s.length()), result + pair.getKey());
 			}
 		}
 	}
-	
+
 	private String cipher(String input) {
 		String res = "";
 		for (int i = 0; i < input.length(); i++) {
@@ -44,7 +44,7 @@ public class Crypto {
 		}
 		return res;
 	}
-	
+
 	private void setAssigns() {
 		assigns.put('A', "I");
 		assigns.put('B', "II");
@@ -71,7 +71,7 @@ public class Crypto {
 		assigns.put('Y', "XXIII");
 		assigns.put('Z', "XXIV");
 	}
-	
+
 	public static void main(String[] args) {
 		new Crypto().run();
 	}
